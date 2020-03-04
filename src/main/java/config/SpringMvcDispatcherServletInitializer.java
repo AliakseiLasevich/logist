@@ -2,7 +2,7 @@ package config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class SpringMvcDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     protected Class<?>[] getRootConfigClasses() {
         return null;
@@ -10,9 +10,7 @@ public class MySpringMvcDispatcherServletInitializer extends AbstractAnnotationC
 
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
-                DemoAppConfig.class,
-                ResourceHandlerConfig.class //add resources path
-        };
+                ApplicationConfig.class};
     }
 
     protected String[] getServletMappings() {

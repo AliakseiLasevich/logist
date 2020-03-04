@@ -1,25 +1,57 @@
 package entity.customer;
 
 import entity.cargo.Cargo;
-import entity.user.forwarder.Forwarder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@Entity
+@Table(name = "customer")
 public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_customer")
+    private int id;
+
+    @Column(name = "name")
     private String name;
-    private String country;
-    private String city;
-    private String address;
-    private String contactPerson;
-    private String phone1;
-    private String phone2;
-    private String fax;
+
+    @Column(name = "status")
     private String status;
-    private String note;
+
+
+    @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_customer")
+    @LazyToOne(value = LazyToOneOption.NO_PROXY)
+    private CustomerInfo customerInfo;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_customer")
+    private List<CustomerNotes> notes;
+
+    @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_customer")
     private CustomerBankAccount customerBankAccount;
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_customer")
+    @LazyToOne(value = LazyToOneOption.NO_PROXY)
     private List<CustomerContract> customerContracts;
-    private List<Forwarder> forwarders;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_customer")
     private List<Cargo> cargoList;
+
+//    @ManyToMany
+//    private List<Forwarder> forwarders;
+
+
 }

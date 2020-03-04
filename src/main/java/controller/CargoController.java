@@ -1,6 +1,6 @@
 package controller;
 
-import entity.customer.Customer;
+import entity.cargo.Cargo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ public class CargoController {
 
     @GetMapping("/cargo")
     public String index(Model theModel) {
-        theModel.addAttribute("customer", new Customer());
+        theModel.addAttribute("customer", new Cargo());
         return "cargo";
     }
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomerDAO {
     List<Customer> getAllCustomers();
+
+    List<Customer> getCustomersPagination(int pageId, int total);
 }

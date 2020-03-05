@@ -109,12 +109,22 @@ header {
     bottom: 0;
 }
 
-table td th {
+
+.table_wrapper table {
     border: 1px solid black;
+    margin: 0 auto;
+    width: 1100px;
+    text-align: left;
+
 }
 
-table {
-    border: 1px solid black;
+th {
+    background-color: cadetblue;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #e0e0eb;
 }
 
 

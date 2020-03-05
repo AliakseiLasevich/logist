@@ -27,9 +27,8 @@ public class Customer {
     private String status;
 
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")
-    @LazyToOne(value = LazyToOneOption.NO_PROXY)
     private CustomerInfo customerInfo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -52,6 +51,5 @@ public class Customer {
 
 //    @ManyToMany
 //    private List<Forwarder> forwarders;
-
 
 }

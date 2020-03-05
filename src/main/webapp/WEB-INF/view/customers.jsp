@@ -61,6 +61,26 @@
         <div class="header_bottom"></div>
     </header>
 
+
+    <section class="actions_panel">
+        <div class="actions_wrapper">
+            <div class="action_item">
+                <a href="${pageContext.request.contextPath}/add_customer"><img
+                        src="${pageContext.request.contextPath}/resources/img/plus.png"></a>
+            </div>
+
+            <div class="action_item">
+                <a href="${pageContext.request.contextPath}/all_customers"><img
+                        src="${pageContext.request.contextPath}/resources/img/all_customers.png"></a>
+            </div>
+            <div class="action_item">
+                <a href="${pageContext.request.contextPath}/filter_customers"><img
+                        src="${pageContext.request.contextPath}/resources/img/filter.png"></a>
+            </div>
+        </div>
+    </section>
+
+
     <section class="main">
 
         <div class="table_wrapper">

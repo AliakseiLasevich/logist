@@ -2,7 +2,6 @@ package entity.customer;
 
 import entity.cargo.Cargo;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
@@ -10,7 +9,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
 @Entity
 @Table(name = "customer")
 public class Customer {
@@ -35,6 +33,7 @@ public class Customer {
     @JoinColumn(name = "id_customer")
     private List<CustomerNotes> notes;
 
+    @Transient
     @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")
     private CustomerBankAccount customerBankAccount;
@@ -52,4 +51,8 @@ public class Customer {
 //    @ManyToMany
 //    private List<Forwarder> forwarders;
 
+
+    public Customer() {
+        this.status = "active";
+    }
 }

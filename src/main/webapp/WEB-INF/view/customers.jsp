@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Customers</title>
@@ -62,26 +63,29 @@
     </header>
 
 
-    <section class="actions_panel">
-        <div class="actions_wrapper">
-            <div class="action_item">
-                <a href="${pageContext.request.contextPath}/add_customer"><img
-                        src="${pageContext.request.contextPath}/resources/img/plus.png"></a>
-            </div>
-
-            <div class="action_item">
-                <a href="${pageContext.request.contextPath}/all_customers"><img
-                        src="${pageContext.request.contextPath}/resources/img/all_customers.png"></a>
-            </div>
-            <div class="action_item">
-                <a href="${pageContext.request.contextPath}/filter_customers"><img
-                        src="${pageContext.request.contextPath}/resources/img/filter.png"></a>
-            </div>
-        </div>
-    </section>
-
-
     <section class="main">
+
+        <section class="actions">
+
+            <div class="actions_wrapper">
+
+                <div class="action_item">
+                    <a href="${pageContext.request.contextPath}/add_customer" title="add new customer"><img
+                            src="${pageContext.request.contextPath}/resources/img/plus.png"></a>
+                </div>
+
+
+                <div class="action_item">
+                    <form class="filter">
+                        <input type="text" placeholder="Filter by name">
+                        <input type="submit" value="Filter" class="button">
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
 
         <div class="table_wrapper">
             <table>
@@ -121,7 +125,7 @@
                         <td>${tempCustomer.customerInfo.phone1}</td>
                         <td>${tempCustomer.customerInfo.phone2}</td>
                         <td>${tempCustomer.customerInfo.email}</td>
-                        <td>${tempCustomer.customerInfo.webSite}</td>
+                        <td>${tempCustomer.customerInfo.website}</td>
                         <td>${tempCustomer.status}</td>
 
                             <%--                        <td>${tempOrder.busyFrom}</td>--%>
@@ -141,6 +145,9 @@
             <c:forEach var="i" begin="1" end="${totalPages}">
                 <a href="/customers/${i}">${i}</a>
             </c:forEach>
+
+            <a href="${pageContext.request.contextPath}/all_customers">Show all</a>
+
         </div>
 
     </section>

@@ -8,4 +8,6 @@ public interface CustomerDAO {
     List<Customer> getAllCustomers();
 
     List<Customer> getCustomersPagination(int pageId, int total);
+
+    void saveCustomer(Customer theCustomer);
 }

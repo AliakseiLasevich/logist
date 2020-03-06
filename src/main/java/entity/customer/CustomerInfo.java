@@ -38,5 +38,5 @@ public class CustomerInfo {
     private String email;
 
     @Column(name = "website")
-    private String webSite;
+    private String website;
 }

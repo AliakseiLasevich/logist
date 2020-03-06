@@ -2,6 +2,7 @@ package service.customerService;
 
 import dao.customerDAO.CustomerDAO;
 import entity.customer.Customer;
+import entity.customer.CustomerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,5 +32,11 @@ public class CustomerServiceImpl implements CustomerService {
             page = (page - 1) * recordsOnPage + 1;
         }
         return customerDAO.getCustomersPagination(page, recordsOnPage);
+    }
+
+    @Transactional
+    @Override
+    public void saveCustomer(Customer theCustomer) {
+        customerDAO.saveCustomer(theCustomer);
     }
 }

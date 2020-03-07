@@ -53,4 +53,9 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @GetMapping("/generate_customers")
+    public String generateCustomers() {
+        customerService.generateCustomers();
+        return "customers";
+    }
 }

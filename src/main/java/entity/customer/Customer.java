@@ -2,8 +2,6 @@ package entity.customer;
 
 import entity.cargo.Cargo;
 import lombok.Data;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -24,9 +22,7 @@ public class Customer {
     @Column(name = "status")
     private String status;
 
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_customer")
+    @Embedded
     private CustomerInfo customerInfo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -38,10 +34,8 @@ public class Customer {
     @JoinColumn(name = "id_customer")
     private CustomerBankAccount customerBankAccount;
 
-
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")
-    @LazyToOne(value = LazyToOneOption.NO_PROXY)
     private List<CustomerContract> customerContracts;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

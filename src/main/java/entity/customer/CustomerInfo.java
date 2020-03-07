@@ -7,14 +7,8 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@Table(name = "customer_info")
-@Entity
+@Embeddable
 public class CustomerInfo {
-
-    @Id
-    @Column(name = "id_customer_info")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
     @Column(name = "country")
     private String country;

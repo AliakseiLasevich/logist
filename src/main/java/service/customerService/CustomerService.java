@@ -13,4 +13,6 @@ public interface CustomerService {
     List<Customer> getCustomersPagination(Optional<Integer> pageId, int total);
 
     void saveCustomer(Customer theCustomer);
+
+    void generateCustomers();
 }

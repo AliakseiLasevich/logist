@@ -10,4 +10,6 @@ public interface CustomerDAO {
     List<Customer> getCustomersPagination(int pageId, int total);
 
     void saveCustomer(Customer theCustomer);
+
+    void generateCustomers();
 }

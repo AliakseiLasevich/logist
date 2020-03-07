@@ -69,12 +69,14 @@ header {
     margin-right: auto;
 }
 
-.menu_item a{
+.menu_item a {
     color: black;
 }
+
 .menu_item a:link {
     text-decoration: none;
 }
+
 .menu_item a:visited {
     text-decoration: none;
 }
@@ -146,16 +148,17 @@ header {
     text-align: center;
 }
 
-.filter{
+.filter {
     display: inline-block;
 }
+
 .action_item {
     display: flex;
     align-items: center;
 
 }
 
-.action_item .filter input{
+.action_item .filter input {
     width: 90px;
 
 }
@@ -190,6 +193,19 @@ tr:nth-child(odd) {
     background-color: white;
 }
 
+.table_pagination {
+    padding: 3px;
+    width: 1200px;
+    height: auto;
+    background-color: cadetblue;
+    margin: 0 auto;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.table_pagination a {
+    color: white;
+}
 
 /******** FOOTER ********/
 footer {

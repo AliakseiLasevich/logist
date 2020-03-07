@@ -76,8 +76,9 @@
 
 
                 <div class="action_item">
-                    <form class="filter">
-                        <input type="text" placeholder="Filter by name">
+
+                    <form action="${pageContext.request.contextPath}/customers/filter/" class="filter">
+                        <input type="text" placeholder="Filter by name" name="filter">
                         <input type="submit" value="Filter" class="button">
                     </form>
 
@@ -101,19 +102,14 @@
                     <th>Email</th>
                     <th>Website</th>
                     <th>Status</th>
-
-
+                    <th>Edit</th>
                 </tr>
 
                 <c:forEach var="tempCustomer" items="${customer}">
 
-                    <%--            <c:url var="cancelLink" value="/order/admin/cancelOrderForm">--%>
-                    <%--                <c:param name="orderId" value="${tempOrder.id}"/>--%>
-                    <%--            </c:url>--%>
-
-                    <%--            <c:url var="billForm" value="/order/billFormForDamagedCar">--%>
-                    <%--                <c:param name="orderId" value="${tempOrder.id}"/>--%>
-                    <%--            </c:url>--%>
+                    <c:url var="editLink" value="${pageContext.request.contextPath}/customer_edit">
+                        <c:param name="customerId" value="${tempCustomer.id}"/>
+                    </c:url>
 
                     <tr>
                         <td>${tempCustomer.id}</td>
@@ -126,34 +122,34 @@
                         <td>${tempCustomer.customerInfo.phone2}</td>
                         <td>${tempCustomer.customerInfo.email}</td>
                         <td>${tempCustomer.customerInfo.website}</td>
-                        <td>${tempCustomer.status}</td>
+                        <td>
+                            <c:if test="${tempCustomer.status == 'active'}">
+                                <img src="${pageContext.request.contextPath}/resources/img/green_point.png"
+                                     alt="Active">
+                            </c:if>
+                            <c:if test="${tempCustomer.status != 'active'}">
+                                <img src="${pageContext.request.contextPath}/resources/img/orange_point.png"
+                                     alt="Archive">
+                            </c:if>
+                        </td>
+                        <td><a href="${editLink}">edit</a></td>
 
-                            <%--                        <td>${tempOrder.busyFrom}</td>--%>
-                            <%--                        <td>${tempOrder.busyTo}</td>--%>
-                            <%--                        <td>${tempOrder.price}</td>--%>
-                            <%--                        <td><c:if test="${tempOrder.valid==1}">Valid</c:if>--%>
-                            <%--                            <c:if test="${tempOrder.valid!=1}">Not valid</c:if>--%>
-                            <%--                        </td>--%>
-                            <%--                        <td><a href="${cancelLink}">Cancel</a></td>--%>
-                            <%--                        <td><a href="${billForm}">Bill</a></td>--%>
                     </tr>
 
                 </c:forEach>
             </table>
 
-
-            <c:forEach var="i" begin="1" end="${totalPages}">
-                <a href="/customers/${i}">${i}</a>
-            </c:forEach>
-
-            <a href="${pageContext.request.contextPath}/all_customers">Show all</a>
-
+            <div class="table_pagination">
+                <c:forEach var="i" begin="1" end="${totalPages}">
+                    <a href="/customers/${i}">${i}</a>
+                </c:forEach>
+                <a href="${pageContext.request.contextPath}/all_customers">Show all</a>
+            </div>
         </div>
 
     </section>
 
     <footer>
-
     </footer>
 
 </section>

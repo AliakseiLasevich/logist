@@ -1,15 +1,11 @@
 package controller;
 
 import entity.customer.Customer;
-import entity.customer.CustomerInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import service.customerService.CustomerService;
 
 import java.util.Optional;
@@ -21,8 +17,9 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping(value = {"/customers", "/customers/{page}"})
-    public String index(@PathVariable Optional<Integer> page, Model theModel) {
-        int recordsOnPage = 20;
+    public String index(@PathVariable Optional<Integer> page,
+                        Model theModel) {
+        int recordsOnPage = 30;
         theModel.addAttribute("customer", customerService.getCustomersPagination(page, recordsOnPage));
         theModel.addAttribute("totalPages", Math.ceil(customerService.getAllCustomers().size() / (double) recordsOnPage));
 
@@ -38,19 +35,33 @@ public class CustomerController {
     @GetMapping("/add_customer")
     public String addNewCustomer(Model theModel) {
         theModel.addAttribute("customer", new Customer());
-//        theModel.addAttribute("customerInfo", new CustomerInfo());
-        return "add_customer";
+        return "customer_edit";
     }
 
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Customer theCustomer,
                                BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/add_customer";
+            return "customer_edit";
         } else {
             customerService.saveCustomer(theCustomer);
         }
         return "redirect:/customers";
+    }
+
+    @GetMapping("/customers/filter/")
+    public String filterCustomersByName(Model theModel,
+                                        @RequestParam("filter") String filter) {
+        theModel.addAttribute("customer", customerService.getFilteredCustomers(filter));
+        return "customers";
+    }
+
+    @GetMapping("/customer_edit")
+    public String editCustomer(Model theModel,
+                               @RequestParam("customerId") int customerId) {
+        Customer customer = customerService.getCustomerById(customerId);
+        theModel.addAttribute("customer", customer);
+        return "customer_edit";
     }
 
     @GetMapping("/generate_customers")
@@ -58,4 +69,5 @@ public class CustomerController {
         customerService.generateCustomers();
         return "customers";
     }
+
 }

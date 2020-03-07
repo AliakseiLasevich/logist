@@ -64,15 +64,16 @@
     <section class="main">
 
         <form:form action="saveCustomer" modelAttribute="customer" method="post">
-<%--            for edit existing customer--%>
-<%--            <form:hidden path="id"/>--%>
+
+            <%--            for edit existing customer--%>
+            <form:hidden path="id"/>
 
             <table>
                 <tbody>
-                <th colspan="2">Add new customer</th>
+                <th colspan="2">Add/Edit Customer</th>
                 <tr>
                     <td><label>Name:</label></td>
-                    <td><form:input path="name"/><form:errors path="name" /></td>
+                    <td><form:input path="name"/><form:errors path="name"/></td>
                 </tr>
 
                 <tr>
@@ -88,55 +89,43 @@
 
                 <tr>
                     <td><label>City:</label></td>
-                    <td><form:input path="customerInfo.city"/><form:errors path="customerInfo.city" /></td>
+                    <td><form:input path="customerInfo.city"/><form:errors path="customerInfo.city"/></td>
                 </tr>
 
                 <tr>
                     <td><label>Address:</label></td>
-                    <td><form:input path="customerInfo.address"/><form:errors path="customerInfo.address" /></td>
+                    <td><form:input path="customerInfo.address"/><form:errors path="customerInfo.address"/></td>
                 </tr>
 
                 <tr>
                     <td><label>Contact person:</label></td>
-                    <td><form:input path="customerInfo.contactPerson"/><form:errors path="customerInfo.contactPerson" /></td>
+                    <td><form:input path="customerInfo.contactPerson"/><form:errors
+                            path="customerInfo.contactPerson"/></td>
                 </tr>
                 <tr>
                     <td><label>Phone 1:</label></td>
-                    <td><form:input path="customerInfo.phone1"/><form:errors path="customerInfo.phone1" /></td>
+                    <td><form:input path="customerInfo.phone1"/><form:errors path="customerInfo.phone1"/></td>
                 </tr>
 
                 <tr>
                     <td><label>Phone 2:</label></td>
-                    <td><form:input path="customerInfo.phone2"/><form:errors path="customerInfo.phone2" /></td>
+                    <td><form:input path="customerInfo.phone2"/><form:errors path="customerInfo.phone2"/></td>
                 </tr>
                 <tr>
                     <td><label>Email:</label></td>
-                    <td><form:input path="customerInfo.email"/><form:errors path="customerInfo.email" /></td>
+                    <td><form:input path="customerInfo.email"/><form:errors path="customerInfo.email"/></td>
                 </tr>
                 <tr>
                     <td><label>Website:</label></td>
-                    <td><form:input path="customerInfo.website"/><form:errors path="customerInfo.website" /></td>
+                    <td><form:input path="customerInfo.website"/><form:errors path="customerInfo.website"/></td>
                 </tr>
 
-
-<%--                <tr>--%>
-<%--                    <td><label>Status:</label></td>--%>
-<%--                    <td><form:select path="status">--%>
-<%--                        <form:option value="available" label="Available"/>--%>
-<%--                        <form:option value="damaged" label="Damaged"/>--%>
-<%--                    </form:select>--%>
-<%--                    </td>--%>
-<%--                </tr>--%>
-
-
-<%--                <tr>--%>
-<%--                    <td><label></label></td>--%>
-<%--                    <td><input type="submit" value="Save customer"></td>--%>
-<%--                </tr>--%>
+                <tr>
+                    <td><label></label></td>
+                    <td><input type="submit" value="Save customer"></td>
+                </tr>
                 </tbody>
             </table>
-            <input type="submit" value="Save customer">
-
 
 
         </form:form>
@@ -149,7 +138,6 @@
 
 
     <footer>
-
     </footer>
 
 </section>

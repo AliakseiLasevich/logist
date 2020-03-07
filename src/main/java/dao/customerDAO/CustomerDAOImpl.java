@@ -2,6 +2,7 @@ package dao.customerDAO;
 
 import entity.customer.Customer;
 import entity.customer.CustomerInfo;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -39,14 +40,28 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
+    public List<Customer> getFilteredCustomers(String filter) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<Customer> query = currentSession.createQuery("from Customer where lower(name)  like lower ('%" + filter + "%')", Customer.class);
+        List<Customer> customers = query.getResultList();
+        return customers;
+    }
+
+    @Override
+    public Customer getCustomerById(int customerId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession.get(Customer.class, customerId);
+    }
+
+    @Override
     public void generateCustomers() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 1500; i++) {
             Session currentSession = sessionFactory.getCurrentSession();
             Customer c = new Customer();
             CustomerInfo ci = new CustomerInfo();
             c.setCustomerInfo(ci);
             c.setName(generateName(5) + i);
-            c.getCustomerInfo().setAddress(generateName(8)  + " - " + randomNumericGenerator(2));
+            c.getCustomerInfo().setAddress(generateName(8) + " - " + randomNumericGenerator(2));
             c.getCustomerInfo().setContactPerson(generateName(5) + " " + generateName(5));
             c.getCustomerInfo().setCountry("Belarus");
             c.getCustomerInfo().setCity(generateName(6));

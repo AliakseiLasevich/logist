@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@Table(name = "customer_notes")
+@Table(name = "customer_note")
 @Entity
-public class CustomerNotes {
+public class CustomerNote {
 
     @Id
     @Column(name = "id_customer_note")

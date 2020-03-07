@@ -27,12 +27,11 @@ public class Customer {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")
-    private List<CustomerNotes> notes;
+    private List<CustomerNote> notes;
 
-    @Transient
-    @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")
-    private CustomerBankAccount customerBankAccount;
+    private List<CustomerBankAccount> customerBankAccount;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")

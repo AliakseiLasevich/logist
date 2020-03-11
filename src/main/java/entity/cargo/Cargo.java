@@ -16,5 +16,18 @@ public class Cargo {
     @Column(name = "id_cargo")
     private int id;
 
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "description")
+    private String description;
+
+    @Embedded
+    private Cargoinfo cargoinfo;
+
+
+
+
+
 
 }

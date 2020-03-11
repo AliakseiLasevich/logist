@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Customers</title>
+    <title>Partner edit</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 
@@ -63,14 +63,14 @@
     </header>
     <section class="main">
 
-        <form:form action="saveCustomer" modelAttribute="customer" method="post">
+        <form:form action="savePartner" modelAttribute="partner" method="post">
 
             <%--            for edit existing customer--%>
             <form:hidden path="id"/>
 
             <table>
                 <tbody>
-                <th colspan="2">Add/Edit Customer</th>
+                <th colspan="2">Add/Edit Partner</th>
                 <tr>
                     <td><label>Name:</label></td>
                     <td><form:input path="name"/><form:errors path="name"/></td>
@@ -78,7 +78,7 @@
 
                 <tr>
                     <td><label>Country:</label></td>
-                    <td><form:select path="customerInfo.country">
+                    <td><form:select path="partnerInfo.country">
                         <form:option value="Belarus" label="Belarus"/>
                         <form:option value="Russia" label="Russia"/>
                         <form:option value="Poland" label="Poland"/>
@@ -89,35 +89,35 @@
 
                 <tr>
                     <td><label>City:</label></td>
-                    <td><form:input path="customerInfo.city"/><form:errors path="customerInfo.city"/></td>
+                    <td><form:input path="partnerInfo.city"/><form:errors path="partnerInfo.city"/></td>
                 </tr>
 
                 <tr>
                     <td><label>Address:</label></td>
-                    <td><form:input path="customerInfo.address"/><form:errors path="customerInfo.address"/></td>
+                    <td><form:input path="partnerInfo.address"/><form:errors path="partnerInfo.address"/></td>
                 </tr>
 
                 <tr>
                     <td><label>Contact person:</label></td>
-                    <td><form:input path="customerInfo.contactPerson"/><form:errors
-                            path="customerInfo.contactPerson"/></td>
+                    <td><form:input path="partnerInfo.contactPerson"/><form:errors
+                            path="partnerInfo.contactPerson"/></td>
                 </tr>
                 <tr>
                     <td><label>Phone 1:</label></td>
-                    <td><form:input path="customerInfo.phone1"/><form:errors path="customerInfo.phone1"/></td>
+                    <td><form:input path="partnerInfo.phone1"/><form:errors path="partnerInfo.phone1"/></td>
                 </tr>
 
                 <tr>
                     <td><label>Phone 2:</label></td>
-                    <td><form:input path="customerInfo.phone2"/><form:errors path="customerInfo.phone2"/></td>
+                    <td><form:input path="partnerInfo.phone2"/><form:errors path="partnerInfo.phone2"/></td>
                 </tr>
                 <tr>
                     <td><label>Email:</label></td>
-                    <td><form:input path="customerInfo.email"/><form:errors path="customerInfo.email"/></td>
+                    <td><form:input path="partnerInfo.email"/><form:errors path="partnerInfo.email"/></td>
                 </tr>
                 <tr>
                     <td><label>Website:</label></td>
-                    <td><form:input path="customerInfo.website"/><form:errors path="customerInfo.website"/></td>
+                    <td><form:input path="partnerInfo.website"/><form:errors path="partnerInfo.website"/></td>
                 </tr>
                 <tr>
                     <td><label>Status:</label></td>
@@ -129,7 +129,7 @@
 
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="Save customer"></td>
+                    <td><input type="submit" value="Save partner"></td>
                 </tr>
                 </tbody>
             </table>
@@ -139,7 +139,7 @@
 
 
         <p>
-            <a href="${pageContext.request.contextPath}/customers">Back to customers</a>
+            <a href="${pageContext.request.contextPath}/partners">Back to partners</a>
         </p>
     </section>
 

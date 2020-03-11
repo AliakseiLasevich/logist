@@ -1,6 +1,7 @@
-package entity.customer;
+package entity.partner;
 
 import entity.cargo.Cargo;
+import entity.customer.CustomerInfo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,12 +9,12 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "customer")
-public class Customer {
+@Table(name = "partner")
+public class Partner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_customer")
+    @Column(name = "id_partner")
     private int id;
 
     @Column(name = "name")
@@ -23,17 +24,11 @@ public class Customer {
     private String status;
 
     @Embedded
-    private CustomerInfo customerInfo;
+    private PartnerInfo partnerInfo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer")
-    private List<CustomerNote> notes;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer")
+    @JoinColumn(name = "partner")
     private List<Cargo> cargoList;
 
-    public Customer() {
-        this.status = "active";
-    }
+
 }

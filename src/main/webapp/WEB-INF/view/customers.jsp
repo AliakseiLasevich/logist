@@ -86,6 +86,8 @@
 
             </div>
 
+            <div class="table_name">Customers</div>
+
         </section>
 
         <div class="table_wrapper">

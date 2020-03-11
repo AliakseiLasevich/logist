@@ -19,7 +19,7 @@ public class CustomerController {
     @GetMapping(value = {"/customers", "/customers/{page}"})
     public String index(@PathVariable Optional<Integer> page,
                         Model theModel) {
-        int recordsOnPage = 30;
+        int recordsOnPage = 10;
         theModel.addAttribute("customer", customerService.getCustomersPagination(page, recordsOnPage));
         theModel.addAttribute("totalPages", Math.ceil(customerService.getAllCustomers().size() / (double) recordsOnPage));
 

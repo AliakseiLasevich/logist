@@ -1,5 +1,7 @@
 package entity.cargo;
 
+import entity.customer.Customer;
+import entity.transfer.Transfer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,12 +24,15 @@ public class Cargo {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "customer")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "transfer")
+    private Transfer transfer;
+
     @Embedded
-    private Cargoinfo cargoinfo;
-
-
-
-
-
+    private CargoInfo cargoInfo;
 
 }

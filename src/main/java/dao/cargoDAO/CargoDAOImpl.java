@@ -1,8 +1,6 @@
 package dao.cargoDAO;
 
 import entity.cargo.Cargo;
-import entity.customer.Customer;
-import entity.partner.Partner;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -36,5 +34,11 @@ public class CargoDAOImpl implements CargoDAO {
     public Cargo getCargoById(int cargoId) {
         Session currentSession = sessionFactory.getCurrentSession();
         return currentSession.get(Cargo.class, cargoId);
+    }
+
+    @Override
+    public void saveCargo(Cargo theCargo) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.saveOrUpdate(theCargo);
     }
 }

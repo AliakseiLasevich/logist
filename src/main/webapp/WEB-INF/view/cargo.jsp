@@ -75,16 +75,6 @@
                             src="${pageContext.request.contextPath}/resources/img/plus.png"></a>
                 </div>
 
-
-<%--                <div class="action_item">--%>
-
-<%--                    <form action="${pageContext.request.contextPath}/cargo/filter/" class="filter">--%>
-<%--                        <input type="text" placeholder="Filter by name" name="filter">--%>
-<%--                        <input type="submit" value="Filter" class="button">--%>
-<%--                    </form>--%>
-
-<%--                </div>--%>
-
             </div>
 
             <div class="table_name">Cargo</div>
@@ -95,13 +85,11 @@
             <table>
                 <tr>
                     <th>Id</th>
+                    <th>Customer</th>
                     <th>Description</th>
                     <th>Code</th>
                     <th>Type</th>
                     <th>Weight</th>
-                    <th>Height</th>
-                    <th>Width</th>
-                    <th>Depth</th>
                     <th>LDM</th>
                     <th>Departure_country</th>
                     <th>Destination_country</th>
@@ -117,13 +105,11 @@
 
                     <tr>
                         <td>${tempCargo.id}</td>
+                        <td>${tempCargo.customer}</td>
                         <td>${tempCargo.description}</td>
                         <td>${tempCargo.cargoInfo.code}</td>
                         <td>${tempCargo.cargoInfo.type}</td>
                         <td>${tempCargo.cargoInfo.weight}</td>
-                        <td>${tempCargo.cargoInfo.height}</td>
-                        <td>${tempCargo.cargoInfo.width}</td>
-                        <td>${tempCargo.cargoInfo.depth}</td>
                         <td>${tempCargo.cargoInfo.ldm}</td>
                         <td>${tempCargo.cargoInfo.departureCountry}</td>
                         <td>${tempCargo.cargoInfo.destinationCountry}</td>
@@ -138,9 +124,7 @@
                             </c:if>
                         </td>
                         <td><a href="${editLink}">edit</a></td>
-
                     </tr>
-
                 </c:forEach>
             </table>
 
@@ -151,7 +135,6 @@
                 <a href="${pageContext.request.contextPath}/all_cargos">Show all</a>
             </div>
         </div>
-
     </section>
 
     <footer>

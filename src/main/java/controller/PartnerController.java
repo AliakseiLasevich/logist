@@ -1,6 +1,5 @@
 package controller;
 
-import entity.customer.Customer;
 import entity.partner.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

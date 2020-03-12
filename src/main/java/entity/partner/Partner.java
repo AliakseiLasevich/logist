@@ -2,6 +2,7 @@ package entity.partner;
 
 import entity.cargo.Cargo;
 import entity.customer.CustomerInfo;
+import entity.transfer.Transfer;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -26,9 +27,9 @@ public class Partner {
     @Embedded
     private PartnerInfo partnerInfo;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "partner")
-    private List<Cargo> cargoList;
+    private List<Transfer> transfers;
 
 
 }

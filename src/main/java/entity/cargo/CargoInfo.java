@@ -9,7 +9,7 @@ import javax.persistence.Embeddable;
 @Data
 @NoArgsConstructor
 @Embeddable
-public class Cargoinfo {
+public class CargoInfo {
 
     @Column(name = "code")
     private int code;
@@ -19,15 +19,6 @@ public class Cargoinfo {
 
     @Column(name = "weight")
     private double weight;
-
-    @Column(name = "height")
-    private double height;
-
-    @Column(name = "width")
-    private double width;
-
-    @Column(name = "depth")
-    private double depth;
 
     @Column(name = "ldm")
     private double ldm;

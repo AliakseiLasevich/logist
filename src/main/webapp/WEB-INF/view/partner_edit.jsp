@@ -65,7 +65,7 @@
 
         <form:form action="savePartner" modelAttribute="partner" method="post">
 
-            <%--            for edit existing customer--%>
+            <%--            for edit existing partners--%>
             <form:hidden path="id"/>
 
             <table>

@@ -40,4 +40,10 @@ public class CargoServiceImpl implements CargoService {
     public Cargo getCargoById(int cargoId) {
         return cargoDAO.getCargoById(cargoId);
     }
+
+    @Transactional
+    @Override
+    public void saveCargo(Cargo theCargo) {
+        cargoDAO.saveCargo(theCargo);
+    }
 }

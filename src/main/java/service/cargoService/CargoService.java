@@ -11,4 +11,6 @@ public interface CargoService {
     List<Cargo> getCargosPaginated(Optional<Integer> pageId, int recordsOnPage);
 
     Cargo getCargoById(int cargoId);
+
+    void saveCargo(Cargo theCargo);
 }

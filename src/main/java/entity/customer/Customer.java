@@ -25,12 +25,7 @@ public class Customer {
     @Embedded
     private CustomerInfo customerInfo;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer")
-    private List<CustomerNote> notes;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Cargo> cargoList;
 
     public Customer() {

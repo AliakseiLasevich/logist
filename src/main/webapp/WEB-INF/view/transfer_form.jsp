@@ -3,13 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Transfer</title>
+    <title>Cargo Edit</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 
 <body>
 <section class="wrapper">
-
     <header>
         <div class="menu_wrapper">
             <div class="menu_item">
@@ -62,72 +61,65 @@
         <div class="logo"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="logo"></div>
         <div class="header_bottom"></div>
     </header>
-
     <section class="main">
 
-        <section class="actions">
-            <div class="actions_wrapper">
+        <form:form action="saveTransfer" modelAttribute="transfer" method="post">
 
-                <div class="action_item">
-                    <a href="${pageContext.request.contextPath}/add_transfer" title="add new transfer"><img
-                            src="${pageContext.request.contextPath}/resources/img/plus.png"></a>
-                </div>
-            </div>
-            <div class="table_name">Transfer</div>
-        </section>
+            <%--            for edit existing cargos--%>
+            <form:hidden path="id"/>
 
-        <div class="table_wrapper">
             <table>
+                <tbody>
+                <th colspan="4">Add/Edit Transfer</th>
+
                 <tr>
-                    <th>Id</th>
-                    <th>Partner</th>
-                    <th>Cargo</th>
-                    <th>Price</th>
-<%--                    <th>Status</th>--%>
-<%--                    <th>Edit</th>--%>
+                    <td>Cargo:</td>
+                    <td>
+                        <form:select path="cargos">
+                            <c:forEach var="tempCargo" items="${cargos}">
+                                <form:option value="${tempCargo.id}" label="${tempCargo.id}, ${tempCargo.customer.name}, ${tempCargo.description}"/>
+                            </c:forEach>
+                        </form:select>
+                    </td>
+                    
+                    <td>Partner:</td>
+                    <td>
+                        <form:select path="partner">
+                            <c:forEach var="tempPartner" items="${partners}">
+                                <form:option value="${tempPartner.id}" label="${tempPartner.name}"/>
+                            </c:forEach>
+                        </form:select>
+                    </td>
+                </tr>
+                    <%--                <tr>--%>
+                    <%--                   --%>
+                    <%--                </tr>--%>
+
+                <tr>
+                    <td></td>
+                    <td><label>Price:</label></td>
+                    <td colspan="2"><form:input path="price"/><form:errors path="price"/></td>
                 </tr>
 
-                <c:forEach var="tempTransfer" items="${transfers}">
 
-                    <c:url var="editLink" value="${pageContext.request.contextPath}/transfer_edit">
-                        <c:param name="transferId" value="${tempTransfer.id}"/>
-                    </c:url>
-
-                    <tr>
-                        <td>${tempTransfer.id}</td>
-                        <td>${tempTransfer.partner.name}</td>
-                        <td>${tempTransfer.cargos}</td>
-                        <td>${tempTransfer.price}</td>
-
-<%--                        <td>--%>
-<%--                            <c:if test="${tempCargo.status == 'active'}">--%>
-<%--                                <img src="${pageContext.request.contextPath}/resources/img/green_point.png"--%>
-<%--                                     alt="Active">--%>
-<%--                            </c:if>--%>
-<%--                            <c:if test="${tempCargo.status != 'active'}">--%>
-<%--                                <img src="${pageContext.request.contextPath}/resources/img/orange_point.png"--%>
-<%--                                     alt="Archive">--%>
-<%--                            </c:if>--%>
-<%--                        </td>--%>
-<%--                        <td><a href="${editLink}">edit</a></td>--%>
-                    </tr>
-                </c:forEach>
+                <tr>
+                    <td colspan="4"><input type="submit" value="Save transfer"></td>
+                </tr>
+                </tbody>
             </table>
 
-<%--            <div class="table_pagination">--%>
-<%--                <c:forEach var="i" begin="1" end="${totalPages}">--%>
-<%--                    <a href="/cargo/${i}">${i}</a>--%>
-<%--                </c:forEach>--%>
-<%--                <a href="${pageContext.request.contextPath}/all_cargos">Show all</a>--%>
-<%--            </div>--%>
-        </div>
+
+        </form:form>
+
+
+        <p>
+            <a href="${pageContext.request.contextPath}/transfer">Back to transfer</a>
+        </p>
     </section>
+
 
     <footer>
     </footer>
-
-</section>
-
 
 </section>
 </body>

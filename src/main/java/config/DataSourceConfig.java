@@ -48,6 +48,7 @@ public class DataSourceConfig {
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+//        hibernateProperties.setProperty("hibernate.enable_lazy_load_no_trans", "true"); //Initialize Lazy Proxies or Collections outside a given Transactional Persistence Context.
         return hibernateProperties;
     }
 

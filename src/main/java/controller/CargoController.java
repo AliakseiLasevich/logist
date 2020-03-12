@@ -44,6 +44,7 @@ public class CargoController {
     @GetMapping("/add_cargo")
     public String addNewCargo(Model theModel) {
         theModel.addAttribute("cargo", new Cargo());
+        theModel.addAttribute("customers", customerService.getAllCustomers());
         return "cargo_edit";
     }
 

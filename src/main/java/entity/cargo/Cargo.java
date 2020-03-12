@@ -2,13 +2,15 @@ package entity.cargo;
 
 import entity.customer.Customer;
 import entity.transfer.Transfer;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
+
+@Getter
+@Setter
+@EqualsAndHashCode
+
 @Entity
 @Table(name = "cargo")
 public class Cargo {
@@ -24,7 +26,7 @@ public class Cargo {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer")
     private Customer customer;
 
@@ -34,5 +36,15 @@ public class Cargo {
 
     @Embedded
     private CargoInfo cargoInfo;
+
+    @Override
+    public String toString(){
+        return "Cargo #"
+                +id
+                + ", "
+                +description
+                + ", customer: "
+                +customer.getName();
+    }
 
 }

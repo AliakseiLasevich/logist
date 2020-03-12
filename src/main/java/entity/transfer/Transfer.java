@@ -2,13 +2,18 @@ package entity.transfer;
 
 import entity.cargo.Cargo;
 import entity.partner.Partner;
-import lombok.Data;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import javax.persistence.*;
 import java.util.List;
 
-
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @Entity
 @Table(name = "transfer")
 public class Transfer {
@@ -18,11 +23,11 @@ public class Transfer {
     @Column(name = "id_transfer")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "partner")
     private Partner partner;
 
-    @OneToMany(mappedBy = "transfer")
+    @OneToMany(mappedBy = "transfer", fetch = FetchType.EAGER)
     private List<Cargo> cargos;
 
     @Column(name = "price")

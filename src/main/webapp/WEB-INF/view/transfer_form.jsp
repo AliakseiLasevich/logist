@@ -81,7 +81,7 @@
                             </c:forEach>
                         </form:select>
                     </td>
-                    
+
                     <td>Partner:</td>
                     <td>
                         <form:select path="partner">
@@ -107,10 +107,7 @@
                 </tr>
                 </tbody>
             </table>
-
-
         </form:form>
-
 
         <p>
             <a href="${pageContext.request.contextPath}/transfer">Back to transfer</a>

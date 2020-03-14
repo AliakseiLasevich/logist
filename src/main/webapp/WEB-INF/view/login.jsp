@@ -76,22 +76,18 @@
                 <div style="padding: 10px" class="panel-body">
 
                     <!-- Login Form -->
-                    <form:form action="${pageContext.request.contextPath}/authenticateTheUser"
-                               method="POST" class="form-horizontal">
+                    <form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST" class="form-horizontal">
 
                         <!-- Place for messages: error, alert etc ... -->
                         <div class="form-group">
-                            <div class="col-xs-15">
+                            <div>
                                 <div>
-
                                     <!-- Check for login error -->
-
                                     <c:if test="${param.error != null}">
-
-                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+<%--                                        <div class="alert alert-danger col-xs-offset-1 col-xs-10">--%>
+                                        <div>
                                             Invalid username/password.
                                         </div>
-
                                     </c:if>
 
                                         <%--                                <c:if test="${param.logout !=null}">--%>

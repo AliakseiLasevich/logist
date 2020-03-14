@@ -25,15 +25,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("123")
-                .password(passwordEncoder().encode("123")).
-                roles("USER");
-    }
+//
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                .withUser("123")
+//                .password(passwordEncoder().encode("123")).
+//                roles("USER");
+//    }
 
 
     @Override
@@ -52,15 +52,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication().dataSource(dataSource)
-//                .usersByUsernameQuery("select username, password, enabled"
-//                        + " from User where user=?")
-//                .authoritiesByUsernameQuery("select username, authority "
-//                        + "from authorities where username=?")
-//                .passwordEncoder(passwordEncoder());
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, enabled from user where username=?")
+                .authoritiesByUsernameQuery("select username, authority from authorities where username=?")
+                .passwordEncoder(passwordEncoder());
+    }
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
@@ -76,7 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .loginPage("/showMyLoginPage")
 ////                .loginProcessingUrl("/authenticateTheUser")
 //                .permitAll()
-//
 //                .and()
 //                .logout().permitAll()
 //                .logoutSuccessUrl("/")

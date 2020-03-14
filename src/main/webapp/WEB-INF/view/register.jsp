@@ -1,8 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Logist</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+    <%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>--%>
+    <%--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
 </head>
 <body>
 <section class="wrapper">
@@ -61,10 +65,38 @@
 
     <section class="main">
 
-        <div class="main_page_image">
-            <h3>Welcome!</h3>
-            <img src="${pageContext.request.contextPath}/resources/img/lorry.jpg" alt="lorry">
-        </div>
+        <p>
+        <h2>Register new user</h2></p>
+
+        <form:form action="registerNewUser" modelAttribute="user" method="post">
+
+            <%--            <form:hidden path="enabled"  />--%>
+
+            <table>
+                <tbody>
+                <tr>
+                    <td><label>Login:</label></td>
+                    <td><form:input path="username"/><form:errors path="username"/></td>
+                </tr>
+                <tr>
+                    <td><label>Password:</label></td>
+                    <td><form:password path="password"/><form:errors path="password"/></td>
+                </tr>
+
+                <tr>
+                    <td>Roles:</td>
+                    <td> </td>
+                </tr>
+
+
+                <tr>
+                    <td><label></label></td>
+                    <td><input type="submit" value="Register" class="save"></td>
+                </tr>
+                </tbody>
+            </table>
+        </form:form>
+
 
     </section>
 

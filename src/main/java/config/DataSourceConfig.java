@@ -2,9 +2,11 @@ package config;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -48,7 +50,6 @@ public class DataSourceConfig {
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
-//        hibernateProperties.setProperty("hibernate.enable_lazy_load_no_trans", "true"); //Initialize Lazy Proxies or Collections outside a given Transactional Persistence Context.
         return hibernateProperties;
     }
 
@@ -59,5 +60,14 @@ public class DataSourceConfig {
         sessionFactory.setPackagesToScan("entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
+    }
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource
+                = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("classpath:messages");
+        messageSource.setDefaultEncoding("UTF-8");
+        return messageSource;
     }
 }

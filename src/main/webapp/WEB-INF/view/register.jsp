@@ -66,7 +66,7 @@
         <p>
         <h2>Register new user</h2></p>
 
-        <form:form action="registerNewUser" modelAttribute="user" method="post">
+        <form:form action="registerUser" modelAttribute="user" method="post">
 
             <%--            <form:hidden path="enabled"  />--%>
             <c:if test="${param.error != null}">

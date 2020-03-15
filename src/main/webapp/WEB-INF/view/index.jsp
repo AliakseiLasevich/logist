@@ -53,17 +53,21 @@
                     Bills
                 </a>
             </div>
+
+            <div class="menu_item">
+                <a href="${pageContext.request.contextPath}/register">
+                    <div class="menu_item_wrapper">
+                        <img src="${pageContext.request.contextPath}/resources/img/plus.png" alt="bill">
+                    </div>
+                    REG
+                </a>
+            </div>
+
+
+        </div>
         </div>
 
-        <div class="menu_item">
-            <a href="${pageContext.request.contextPath}/register">
-                <div class="menu_item_wrapper">
-                    <img src="${pageContext.request.contextPath}/resources/img/all_customers.png" alt="bill">
-                </div>
-                Bills
-            </a>
-        </div>
-        </div>
+
 
         <div class="logo"><img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="logo"></div>
         <div class="header_bottom"></div>

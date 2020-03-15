@@ -2,19 +2,17 @@ package controller;
 
 import entity.authorities.Authorities;
 import entity.user.User;
+import exceptions.UserExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 
+import org.springframework.web.context.request.WebRequest;
 import service.userService.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -30,24 +28,41 @@ public class UserController {
         return "register";
     }
 
-    @PostMapping("/registerNewUser")
-    public String registerNewUser(HttpServletRequest request,
-                                  @Valid @ModelAttribute("user") User user,
-                                  BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "/register";
-        } else {
+    @PostMapping("/registerUser")
+    public String registerUser(WebRequest request,
+                               @Valid @ModelAttribute("user") User user,
+                               BindingResult bindingResult) {
+        User registered = new User();
+
+        if (!bindingResult.hasErrors()) {
             user.setAuthority(new Authorities(user.getUsername(), request.getParameter("role")));
-            userService.saveUser(user);
+            registered = createUserAccount(user, bindingResult);
         }
-        return "register";
+        if (registered == null) {
+            bindingResult.rejectValue("username", "message.regError");
+            return "register";
+        }
+
+        return "index";
     }
 
-    @InitBinder
-    public void initBinder(WebDataBinder dataBinder) {
-        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    private User createUserAccount(User user, BindingResult result) {
+        User registered = null;
+        try {
+            registered = userService.registerNewUserAccount(user);
+        } catch (UserExistsException e) {
+            return null;
+        }
+        return registered;
     }
-
 
 }
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder dataBinder) {
+//        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+//        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+//    }
+
+
+

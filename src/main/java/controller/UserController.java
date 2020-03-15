@@ -1,17 +1,21 @@
 package controller;
 
+import entity.authorities.Authorities;
 import entity.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+
 
 import service.userService.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -27,17 +31,22 @@ public class UserController {
     }
 
     @PostMapping("/registerNewUser")
-    public String registerNewUser(@ModelAttribute("user") User user,
-                                  @RequestParam("role") String role,
+    public String registerNewUser(HttpServletRequest request,
+                                  @Valid @ModelAttribute("user") User user,
                                   BindingResult bindingResult) {
-
         if (bindingResult.hasErrors()) {
             return "/register";
         } else {
-//            userService.saveUser(user);
-//            authoritiesService.saveRoleOfUser(new Authorities(user));
+            user.setAuthority(new Authorities(user.getUsername(), request.getParameter("role")));
+            userService.saveUser(user);
         }
         return "register";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
 

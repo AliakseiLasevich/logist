@@ -5,8 +5,6 @@
 <head>
     <title>Logist</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <%--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>--%>
-    <%--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
 </head>
 <body>
 <section class="wrapper">
@@ -71,6 +69,12 @@
         <form:form action="registerNewUser" modelAttribute="user" method="post">
 
             <%--            <form:hidden path="enabled"  />--%>
+            <c:if test="${param.error != null}">
+                <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+                    Invalid username and password.
+                </div>
+
+            </c:if>
 
             <table>
                 <tbody>
@@ -84,8 +88,14 @@
                 </tr>
 
                 <tr>
-                    <td>Roles:</td>
-                    <td> </td>
+                    <td>Role:</td>
+                    <td>
+                        <select name="role">
+                            <option value="ROLE_USER">User</option>
+                            <option value="ROLE_ADMIN">Admin</option>
+                        </select>
+
+                    </td>
                 </tr>
 
 

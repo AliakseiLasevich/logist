@@ -8,6 +8,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -16,6 +18,13 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+
+    @Transactional
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers();
+    }
 
     @Transactional
     @Override

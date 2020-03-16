@@ -21,8 +21,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public List<Customer> getAllCustomers() {
         Session currentSession = sessionFactory.getCurrentSession();
         Query<Customer> theQuery = currentSession.createQuery("from Customer order by status, id_customer", Customer.class);
-        List<Customer> customers = theQuery.getResultList();
-        return customers;
+        return theQuery.getResultList();
     }
 
     public List<Customer> getCustomersPagination(int pageId, int total) {

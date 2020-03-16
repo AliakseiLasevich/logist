@@ -3,11 +3,13 @@ package entity.user;
 import entity.authorities.Authorities;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,8 +37,8 @@ public class User {
     @Column(name = "enabled")
     private boolean enabled;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Authorities authority;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Authorities> authorities;
 
     public User() {
         this.enabled = true;

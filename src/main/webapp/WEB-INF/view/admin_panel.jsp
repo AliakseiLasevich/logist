@@ -10,10 +10,8 @@
 
     <section class="main">
 
-        <ul>
-            <li><a href="${pageContext.request.contextPath}/register">Register new user</a> </li>
-            <li><a href="${pageContext.request.contextPath}/all_users">Show all users</a> </li>
-        </ul>
+        <a href="${pageContext.request.contextPath}/register">Register new user</a><br>
+        <a href="${pageContext.request.contextPath}/allUsers">Show all users</a>
 
 
     </section>

@@ -40,12 +40,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                     .antMatchers("/resources/**").permitAll()
+                    .antMatchers("/admin/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/authenticateTheUser")
                     .permitAll()
+                .and()
+                    .logout()
+                    .logoutSuccessUrl("/")
+                .and()
+                    .exceptionHandling().accessDeniedPage("/access-denied")
                 .and()
                     .httpBasic();
 
@@ -60,28 +66,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
 
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http.
-//                authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/order/**").hasRole("USER")
-//                .antMatchers("/cars/**").hasRole("ADMIN")
-//
-//                /*Calls login page when try to get access to antMatchers path*/
-//                .and()
-//                .formLogin()
-//                .loginPage("/showMyLoginPage")
-////                .loginProcessingUrl("/authenticateTheUser")
-//                .permitAll()
-//                .and()
-//                .logout().permitAll()
-//                .logoutSuccessUrl("/")
-//                .and()
-//                .exceptionHandling().accessDeniedPage("/access-denied")
-//                .and()
-//        ;
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

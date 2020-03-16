@@ -35,14 +35,16 @@ header {
     position: relative;
     padding-top: 5px;
     padding-bottom: 10px;
+    display: flex;
 }
 
 .menu_wrapper {
     position: relative;
     margin-left: 20px;
-    width: 550px;
+    width: 450px;
     display: flex;
     justify-content: space-between;
+    margin-right: 450px;
 }
 
 .menu_item {
@@ -79,6 +81,17 @@ header {
 
 .menu_item a:visited {
     text-decoration: none;
+}
+
+.menu_item .exit{
+    height: 40px;
+
+}
+
+.user_panel{
+    display: flex;
+    width: 175px;
+    justify-content: space-between;
 }
 
 .logo {

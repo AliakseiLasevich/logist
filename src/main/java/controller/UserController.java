@@ -28,6 +28,12 @@ public class UserController {
         return "register";
     }
 
+    @GetMapping("/user_panel")
+    public String userPanel(Model theModel) {
+
+        return "user_panel";
+    }
+
     @PostMapping("/registerUser")
     public String registerUser(WebRequest request,
                                @Valid @ModelAttribute("user") User user,

@@ -46,12 +46,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDAO.getFilteredCustomers(filter);
     }
 
-    @Override
-    @Transactional
-    public void generateCustomers() {
-        customerDAO.generateCustomers();
-    }
-
     @Transactional
     @Override
     public Customer getCustomerById(int customerId) {

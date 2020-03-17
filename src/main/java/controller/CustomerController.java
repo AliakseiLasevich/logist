@@ -64,10 +64,4 @@ public class CustomerController {
         return "customer_edit";
     }
 
-    @GetMapping("/generate_customers")
-    public String generateCustomers() {
-        customerService.generateCustomers();
-        return "customers";
-    }
-
 }

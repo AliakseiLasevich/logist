@@ -3,13 +3,15 @@ package controller;
 import entity.authorities.Authorities;
 import entity.user.User;
 import exceptions.UserExistsException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 import service.userService.UserService;
 
@@ -19,6 +21,8 @@ import java.util.List;
 
 @Controller
 public class UserController {
+
+    private Logger logger = LoggerFactory.getLogger("UserController");
 
     @Autowired
     private UserService userService;
@@ -48,7 +52,7 @@ public class UserController {
         User registered = new User();
 
         if (!bindingResult.hasErrors()) {
-
+            logger.info("No errors in form. Try to save user");
             List<Authorities> authoritiesList = new ArrayList<>();
             authoritiesList.add(new Authorities(user, user.getUsername(), request.getParameter("role")));
             user.setAuthorities(authoritiesList);
@@ -59,7 +63,7 @@ public class UserController {
             bindingResult.rejectValue("username", "message.regError");
             return "register";
         }
-
+        logger.info("registerUser(). Errors in form");
         return "register";
     }
 
@@ -68,6 +72,7 @@ public class UserController {
         try {
             registered = userService.registerNewUserAccount(user);
         } catch (UserExistsException e) {
+            logger.info(user.getUsername() + " - User exists. Return null");
             return null;
         }
         return registered;

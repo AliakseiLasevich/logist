@@ -11,8 +11,6 @@ public interface CustomerDAO {
 
     void saveCustomer(Customer theCustomer);
 
-    void generateCustomers();
-
     List<Customer> getFilteredCustomers(String filter);
 
     Customer getCustomerById(int customerId);

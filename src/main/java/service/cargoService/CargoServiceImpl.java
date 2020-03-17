@@ -12,6 +12,8 @@ import java.util.Optional;
 @Service
 public class CargoServiceImpl implements CargoService {
 
+
+
     @Autowired
     CargoDAO cargoDAO;
 

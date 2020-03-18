@@ -46,15 +46,6 @@
                 Transfer
             </a>
         </div>
-
-        <div class="menu_item">
-            <a href="${pageContext.request.contextPath}/bill">
-                <div class="menu_item_wrapper">
-                    <img src="${pageContext.request.contextPath}/resources/img/bill.png" alt="bill">
-                </div>
-                Bills
-            </a>
-        </div>
     </div>
     </div>
 

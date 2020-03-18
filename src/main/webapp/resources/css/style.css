@@ -41,7 +41,7 @@ header {
 .menu_wrapper {
     position: relative;
     margin-left: 20px;
-    width: 450px;
+    width: 400px;
     display: flex;
     justify-content: space-between;
     margin-right: 450px;

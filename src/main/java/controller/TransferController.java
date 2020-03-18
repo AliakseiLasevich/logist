@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.cargoService.CargoService;
-import service.partnerService.PartnerService;
-import service.transferService.TransferService;
+import service.interfaces.CargoService;
+import service.interfaces.PartnerService;
+import service.interfaces.TransferService;
 
 @Controller
 public class TransferController {

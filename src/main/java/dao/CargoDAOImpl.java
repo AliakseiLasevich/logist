@@ -1,5 +1,6 @@
-package dao.cargoDAO;
+package dao;
 
+import dao.interfaces.CargoDAO;
 import entity.cargo.Cargo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,6 +31,8 @@ public class CargoDAOImpl implements CargoDAO {
     public List<Cargo> getCargosPaginated(int page, int recordsOnPage) {
         logger.info("Try to get cargo pagination from database");
         Session currentSession = sessionFactory.getCurrentSession();
+
+
         String sql = "select * from Cargo order by status , id_cargo limit " + (page - 1) + "," + recordsOnPage;
         Query<Cargo> query = currentSession.createSQLQuery(sql).addEntity(Cargo.class);
         return query.getResultList();

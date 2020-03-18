@@ -1,4 +1,4 @@
-package service.customerService;
+package service.interfaces;
 
 import entity.customer.Customer;
 import entity.customer.CustomerInfo;

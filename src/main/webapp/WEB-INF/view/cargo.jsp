@@ -50,7 +50,6 @@
                     <c:url var="editLink" value="${pageContext.request.contextPath}/cargo_edit">
                         <c:param name="cargoId" value="${tempCargo.id}"/>
                     </c:url>
-
                     <tr>
                         <td>${tempCargo.id}</td>
                         <td>${tempCargo.customer}</td>
@@ -61,6 +60,7 @@
                         <td>${tempCargo.cargoInfo.ldm}</td>
                         <td>${tempCargo.cargoInfo.departureCountry}</td>
                         <td>${tempCargo.cargoInfo.destinationCountry}</td>
+
                         <td>
                             <c:if test="${tempCargo.status == 'active'}">
                                 <img src="${pageContext.request.contextPath}/resources/img/green_point.png"
@@ -71,6 +71,7 @@
                                      alt="Archive">
                             </c:if>
                         </td>
+
                         <td><a href="${editLink}">edit</a></td>
                     </tr>
                 </c:forEach>

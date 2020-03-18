@@ -1,4 +1,4 @@
-package service.transferService;
+package service.interfaces;
 
 import entity.transfer.Transfer;
 

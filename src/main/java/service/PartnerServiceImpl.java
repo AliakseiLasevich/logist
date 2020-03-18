@@ -1,10 +1,11 @@
-package service.partnerService;
+package service;
 
-import dao.partnerDAO.PartnerDAO;
+import dao.interfaces.PartnerDAO;
 import entity.partner.Partner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import service.interfaces.PartnerService;
 
 import java.util.List;
 import java.util.Optional;

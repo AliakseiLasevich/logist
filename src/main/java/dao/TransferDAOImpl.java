@@ -1,6 +1,6 @@
-package dao.transferDAO;
+package dao;
 
-import entity.cargo.Cargo;
+import dao.interfaces.TransferDAO;
 import entity.transfer.Transfer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

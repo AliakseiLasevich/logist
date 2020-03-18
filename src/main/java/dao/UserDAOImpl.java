@@ -1,5 +1,6 @@
-package dao.userDAO;
+package dao;
 
+import dao.interfaces.UserDAO;
 import entity.user.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,5 +47,4 @@ public class UserDAOImpl implements UserDAO {
         logger.info("Can't find user" + username + "in db.");
         return null;
     }
-
 }

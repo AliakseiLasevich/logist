@@ -1,13 +1,13 @@
-package dao.userDAO;
+package service.interfaces;
 
 import entity.user.User;
 
 import java.util.List;
 
-public interface UserDAO {
+public interface UserService {
     void saveUser(User user);
 
-    User getUserByUsername(String username);
+    User registerNewUserAccount(User user);
 
     List<User> getAllUsers();
 }

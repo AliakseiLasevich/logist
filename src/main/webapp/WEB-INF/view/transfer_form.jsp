@@ -41,16 +41,12 @@
                         </form:select>
                     </td>
                 </tr>
-                    <%--                <tr>--%>
-                    <%--                   --%>
-                    <%--                </tr>--%>
 
                 <tr>
                     <td></td>
                     <td><label>Price:</label></td>
                     <td colspan="2"><form:input path="price"/><form:errors path="price"/></td>
                 </tr>
-
 
                 <tr>
                     <td colspan="4"><input type="submit" value="Save transfer"></td>

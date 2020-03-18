@@ -1,4 +1,4 @@
-package dao.customerDAO;
+package dao.interfaces;
 
 import entity.customer.Customer;
 

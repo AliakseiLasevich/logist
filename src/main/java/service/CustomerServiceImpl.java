@@ -1,10 +1,11 @@
-package service.customerService;
+package service;
 
-import dao.customerDAO.CustomerDAO;
+import dao.interfaces.CustomerDAO;
 import entity.customer.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import service.interfaces.CustomerService;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package dao.partnerDAO;
+package dao.interfaces;
 
 import entity.partner.Partner;
 

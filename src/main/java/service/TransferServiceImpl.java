@@ -1,10 +1,11 @@
-package service.transferService;
+package service;
 
-import dao.transferDAO.TransferDAO;
+import dao.interfaces.TransferDAO;
 import entity.transfer.Transfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import service.interfaces.TransferService;
 
 import java.util.List;
 

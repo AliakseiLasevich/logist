@@ -3,13 +3,12 @@ package controller;
 import entity.cargo.Cargo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import service.cargoService.CargoService;
-import service.customerService.CustomerService;
-import service.partnerService.PartnerService;
+import service.interfaces.CargoService;
+import service.interfaces.CustomerService;
+import service.interfaces.PartnerService;
 
 import java.util.Optional;
 

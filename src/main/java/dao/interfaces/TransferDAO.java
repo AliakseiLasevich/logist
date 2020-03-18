@@ -1,4 +1,4 @@
-package dao.transferDAO;
+package dao.interfaces;
 
 import entity.transfer.Transfer;
 

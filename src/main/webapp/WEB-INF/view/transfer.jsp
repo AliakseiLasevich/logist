@@ -32,8 +32,7 @@
                     <th>Partner</th>
                     <th>Cargo</th>
                     <th>Price</th>
-<%--                    <th>Status</th>--%>
-<%--                    <th>Edit</th>--%>
+
                 </tr>
 
                 <c:forEach var="tempTransfer" items="${transfers}">
@@ -48,27 +47,11 @@
                         <td>${tempTransfer.cargos}</td>
                         <td>${tempTransfer.price}</td>
 
-<%--                        <td>--%>
-<%--                            <c:if test="${tempCargo.status == 'active'}">--%>
-<%--                                <img src="${pageContext.request.contextPath}/resources/img/green_point.png"--%>
-<%--                                     alt="Active">--%>
-<%--                            </c:if>--%>
-<%--                            <c:if test="${tempCargo.status != 'active'}">--%>
-<%--                                <img src="${pageContext.request.contextPath}/resources/img/orange_point.png"--%>
-<%--                                     alt="Archive">--%>
-<%--                            </c:if>--%>
-<%--                        </td>--%>
-<%--                        <td><a href="${editLink}">edit</a></td>--%>
+
                     </tr>
                 </c:forEach>
             </table>
 
-<%--            <div class="table_pagination">--%>
-<%--                <c:forEach var="i" begin="1" end="${totalPages}">--%>
-<%--                    <a href="/cargo/${i}">${i}</a>--%>
-<%--                </c:forEach>--%>
-<%--                <a href="${pageContext.request.contextPath}/all_cargos">Show all</a>--%>
-<%--            </div>--%>
         </div>
     </section>
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
-import service.userService.UserService;
+import service.interfaces.UserService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -63,8 +63,8 @@ public class UserController {
             bindingResult.rejectValue("username", "message.regError");
             return "register";
         }
-        logger.info("registerUser(). Errors in form");
-        return "register";
+        logger.info("New user " + registered.getUsername() + " registered");
+        return "redirect:/allUsers";
     }
 
     private User createUserAccount(User user, BindingResult result) {

@@ -1,4 +1,4 @@
-package service.partnerService;
+package service.interfaces;
 
 import entity.partner.Partner;
 

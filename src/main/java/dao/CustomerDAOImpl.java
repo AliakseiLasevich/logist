@@ -1,5 +1,6 @@
-package dao.customerDAO;
+package dao;
 
+import dao.interfaces.CustomerDAO;
 import entity.customer.Customer;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

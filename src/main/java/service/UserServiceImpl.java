@@ -1,6 +1,6 @@
-package service.userService;
+package service;
 
-import dao.userDAO.UserDAO;
+import dao.interfaces.UserDAO;
 import entity.user.User;
 import exceptions.UserExistsException;
 import org.slf4j.Logger;
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import service.interfaces.UserService;
 
 import java.util.List;
 

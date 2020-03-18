@@ -65,7 +65,7 @@
                     <div class="menu_item_wrapper">
                         <img src="${pageContext.request.contextPath}/resources/img/admin.png" alt="admin">
                     </div>
-                    Admin
+                    <sec:authentication property="principal.username"/>
                 </a>
             </div>
         </security:authorize>

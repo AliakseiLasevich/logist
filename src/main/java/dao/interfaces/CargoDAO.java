@@ -1,4 +1,4 @@
-package dao.cargoDAO;
+package dao.interfaces;
 
 import entity.cargo.Cargo;
 

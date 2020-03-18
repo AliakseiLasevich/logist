@@ -1,10 +1,11 @@
-package service.cargoService;
+package service;
 
-import dao.cargoDAO.CargoDAO;
+import dao.interfaces.CargoDAO;
 import entity.cargo.Cargo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import service.interfaces.CargoService;
 
 import java.util.List;
 import java.util.Optional;

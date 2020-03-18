@@ -1,4 +1,4 @@
-package service.cargoService;
+package service.interfaces;
 
 import entity.cargo.Cargo;
 

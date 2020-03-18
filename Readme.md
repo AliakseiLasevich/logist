@@ -12,3 +12,5 @@ Two roles are implemented: Admin and User. Administrator can create new users in
 - JUnit
 - SLF4J
 - JSP + JSTL
+
+![screenshot](screenshot.jpg)

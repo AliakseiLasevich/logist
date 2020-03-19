@@ -16,6 +16,7 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+
     @GetMapping(value = {"/customers", "/customers/{page}"})
     public String index(@PathVariable Optional<Integer> page,
                         Model theModel) {
@@ -63,5 +64,4 @@ public class CustomerController {
         theModel.addAttribute("customer", customer);
         return "customer_edit";
     }
-
 }

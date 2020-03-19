@@ -25,20 +25,25 @@
                 <tr>
                     <td>Cargo:</td>
                     <td>
-                        <form:select path="cargos">
+
+                        <select name="cargoId">
                             <c:forEach var="tempCargo" items="${cargos}">
-                                <form:option value="${tempCargo.id}" label="${tempCargo.id}, ${tempCargo.customer.name}, ${tempCargo.description}"/>
+                                <option value="${tempCargo.id}">
+                                        ${tempCargo.id}, ${tempCargo.customer.name}, ${tempCargo.description}
+                                </option>
                             </c:forEach>
-                        </form:select>
+                        </select>
                     </td>
 
                     <td>Partner:</td>
                     <td>
-                        <form:select path="partner">
+                        <select name="partnerId">
                             <c:forEach var="tempPartner" items="${partners}">
-                                <form:option value="${tempPartner.id}" label="${tempPartner.name}"/>
+                                <option value="${tempPartner.id}">
+                                       ${tempPartner.name}
+                                </option>
                             </c:forEach>
-                        </form:select>
+                        </select>
                     </td>
                 </tr>
 

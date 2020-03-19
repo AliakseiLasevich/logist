@@ -31,8 +31,6 @@ public class CargoDAOImpl implements CargoDAO {
     public List<Cargo> getCargosPaginated(int page, int recordsOnPage) {
         logger.info("Try to get cargo pagination from database");
         Session currentSession = sessionFactory.getCurrentSession();
-
-
         String sql = "select * from Cargo order by status , id_cargo limit " + (page - 1) + "," + recordsOnPage;
         Query<Cargo> query = currentSession.createSQLQuery(sql).addEntity(Cargo.class);
         return query.getResultList();
@@ -50,5 +48,13 @@ public class CargoDAOImpl implements CargoDAO {
         logger.info("Try to save cargo in database");
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.saveOrUpdate(theCargo);
+    }
+
+    @Override
+    public List<Cargo> getCargoWithoutTransfer() {
+        logger.info("Get all cargos that contains no transfer");
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<Cargo> theQuery = currentSession.createQuery("from Cargo where transfer is null", Cargo.class);
+        return theQuery.getResultList();
     }
 }

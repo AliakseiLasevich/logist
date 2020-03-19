@@ -13,4 +13,7 @@ public interface CargoService {
     Cargo getCargoById(int cargoId);
 
     void saveCargo(Cargo theCargo);
+
+    List<Cargo> getCargoWithoutTransfer();
+
 }

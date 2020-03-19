@@ -49,4 +49,10 @@ public class CargoServiceImpl implements CargoService {
     public void saveCargo(Cargo theCargo) {
         cargoDAO.saveCargo(theCargo);
     }
+
+    @Transactional
+    @Override
+    public List<Cargo> getCargoWithoutTransfer() {
+        return cargoDAO.getCargoWithoutTransfer();
+    }
 }

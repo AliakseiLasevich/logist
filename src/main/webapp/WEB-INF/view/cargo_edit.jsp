@@ -24,11 +24,19 @@
                 <tr>
                     <td>Customer:</td>
                     <td>
-                        <form:select path="customer">
-                            <c:forEach var="tempCustomer" items="${customers}">
-                                <form:option value="${tempCustomer}" label="${tempCustomer.name}"/>
-                            </c:forEach>
-                        </form:select>
+                        <label>
+                            <select name="customerId">
+                                <c:forEach var="tempCustomer" items="${customers}">
+                                    <option value="${tempCustomer.id}">${tempCustomer.name}</option>
+                                </c:forEach>
+                            </select>
+                        </label>
+
+                            <%--                        <form:select path="customer">--%>
+<%--                            <c:forEach var="tempCustomer" items="${customers}">--%>
+<%--                                <form:option value="${tempCustomer}" label="${tempCustomer.name}"/>--%>
+<%--                            </c:forEach>--%>
+<%--                        </form:select>--%>
                     </td>
                 </tr>
 

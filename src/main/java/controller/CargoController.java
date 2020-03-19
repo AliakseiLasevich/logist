@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import service.interfaces.CargoService;
 import service.interfaces.CustomerService;
 import service.interfaces.PartnerService;
@@ -39,7 +40,6 @@ public class CargoController {
         return "cargo";
     }
 
-
     @GetMapping("/add_cargo")
     public String addNewCargo(Model theModel) {
         theModel.addAttribute("cargo", new Cargo());
@@ -58,10 +58,13 @@ public class CargoController {
 
     @PostMapping("/saveCargo")
     public String saveCargo(@ModelAttribute("cargo") Cargo theCargo,
+                            WebRequest request,
                             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "cargo_edit";
         } else {
+            int customerId = Integer.parseInt(request.getParameter("customerId"));
+            theCargo.setCustomer(customerService.getCustomerById(customerId));
             cargoService.saveCargo(theCargo);
         }
         return "redirect:/cargo";
